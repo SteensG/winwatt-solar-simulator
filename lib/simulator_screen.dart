@@ -45,16 +45,32 @@ class _CalculatorState extends State<Calculator> {
   void loadWattPeakList() {
     wattPeakList = [];
     wattPeakList.add(new DropdownMenuItem(
-      child: new Text('295'),
+      child: new Text('Viessmann VITOVOLT 280Wp blue'),
       value: 0,
     ));
     wattPeakList.add(new DropdownMenuItem(
-      child: new Text('320'),
+      child: new Text('Viessmann VITOVOLT 300Wp black'),
       value: 1,
     ));
     wattPeakList.add(new DropdownMenuItem(
-      child: new Text('350'),
+      child: new Text('Viessmann VITOVOLT 305Wp blue'),
       value: 2,
+    ));
+    wattPeakList.add(new DropdownMenuItem(
+      child: new Text('SunPower HighPower P19 320Wp black'),
+      value: 3,
+    ));
+    wattPeakList.add(new DropdownMenuItem(
+      child: new Text('SunPower HighPower MAX2 360Wp black'),
+      value: 4,
+    ));
+    wattPeakList.add(new DropdownMenuItem(
+      child: new Text('SunPower HighPower MAX3 375Wp black'),
+      value: 5,
+    ));
+    wattPeakList.add(new DropdownMenuItem(
+      child: new Text('SunPower HighPower MAX3 390Wp black'),
+      value: 6,
     ));
   }
 
@@ -72,7 +88,6 @@ class _CalculatorState extends State<Calculator> {
         key: calculatorFormKey,
         child: SafeArea(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextFormField(
                 controller: controllerPanels,
@@ -119,6 +134,7 @@ class _CalculatorState extends State<Calculator> {
               Text(
                 'Value: ${(_selectedAzimut).round()}',
               ),
+              Text('Efficiency: ${factor}'),
               Text('Select your location'),
               Container(
                 height: 50,
@@ -199,11 +215,19 @@ class _CalculatorState extends State<Calculator> {
       }
 
       if (_selectedWattPeak == 0) {
-        wattPeak = 295;
+        wattPeak = 280;
       } else if (_selectedWattPeak == 1) {
-        wattPeak = 320;
+        wattPeak = 300;
       } else if (_selectedWattPeak == 2){
-        wattPeak = 350;
+        wattPeak = 305;
+      } else if (_selectedWattPeak == 3){
+        wattPeak = 320;
+      } else if (_selectedWattPeak == 4){
+        wattPeak = 360;
+      } else if (_selectedWattPeak == 5){
+        wattPeak = 375;
+      } else if (_selectedWattPeak == 6){
+        wattPeak = 390;
       }
 
       if (_selectedInclination == 0) {
