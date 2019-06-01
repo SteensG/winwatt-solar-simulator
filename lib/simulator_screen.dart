@@ -63,10 +63,32 @@ class _CalculatorState extends State<Calculator> {
       int panels = int.parse(controllerPanels.text);
       int inclination = int.parse(controllerInclination.text);
       int azimut = int.parse(controllerAzimut.text);
-      int result = panels + inclination + azimut;
+      int location;
+      int wattPeak;
+
+      if(_selectedLocation == 0){
+        location = 93;
+      } else if(_selectedLocation == 1) {
+        location = 95;
+      } else if(_selectedLocation == 2){
+        location = 93;
+      } else if(_selectedLocation == 3){
+        location = 95;
+      }
+
+      if(_selectedWattPeak == 0){
+        wattPeak = 295;
+      } else if (_selectedWattPeak == 1){
+        wattPeak = 320;
+      } else {
+        wattPeak = 350;
+      }
+
+      int result = panels * wattPeak;
 
       setState(() {
-        textToShow = "$panels + $inclination +$azimut +$_selectedLocation +$_selectedWattPeak = $result";
+        //textToShow = "$panels + $inclination +$azimut +$_selectedLocation +$_selectedWattPeak = $result";
+        textToShow = "$panels * $_selectedWattPeak = $result";
       });
     }
   }
@@ -107,7 +129,7 @@ class _CalculatorState extends State<Calculator> {
                 decoration: InputDecoration(hintText: "What is your azimut?"),
                 validator: (value) {
                   if (value.isEmpty)
-                    return "Please enter a number between 0 and 360 degrees";
+                    return "Please enter a number between -90 and 90 degrees, where 0 degrees is south.";
                 },
               ),
               Text('Select your location'),

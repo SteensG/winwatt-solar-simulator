@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:winwatt_solar_simulator/simulator_screen.dart';
+import 'package:winwatt_solar_simulator/slider.dart';
 
 void main() => runApp(App());
 
@@ -8,7 +9,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Calculator",
-      home: Calculator()
+      home: SliderScreen()
     );
   }
 }
